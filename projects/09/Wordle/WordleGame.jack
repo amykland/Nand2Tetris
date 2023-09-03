@@ -1,0 +1,476 @@
+class WordleGame {
+	field int position;
+	field int gameseed;
+	field boolean startScreen;
+	constructor WordleGame new() {
+	let position = 10;
+	let startScreen = true;
+		return this;
+	}
+	method char toLower(char ch) {
+		if (ch > 64 & ch < 91) {
+			let ch = ch + 32;
+		}
+		return ch;
+	}
+	method void board() {
+		var int i;
+		let i=0;
+		do Screen.clearScreen();
+		do Output.moveCursor(6,27);
+		do Output.printString("WORDLE");
+		do Screen.drawLine(213,80,265,80);
+		do Output.moveCursor(10,20);
+		do Output.printString("Press any key to begin");
+		while (startScreen) {
+			let i = i+1;
+			if (~(Keyboard.keyPressed()=0)) {
+				let gameseed = i;
+				do Screen.clearScreen();
+				do Sys.wait(1000);
+				let startScreen = false;
+			}
+
+		}
+		do Output.moveCursor(0,0);
+		do Output.printString("key:");
+		do Output.println();
+		do Output.printString("uppercase: correct letter correct space");
+		do Output.println();
+		do Output.printString("lowercase: correct letter wrong space");
+		do Output.println();
+		do Output.printString("Blank: Letter not in word");
+		do Output.moveCursor(6,27);
+		do Output.printString("WORDLE");
+		do Screen.drawLine(213,80,265,80);
+		return;
+	}
+	method String RandWord() {
+		var Array wordArray;
+		var String word;
+
+		do Random.setSeed(gameseed);
+
+		let wordArray = Array.new(300);
+		let wordArray[0] = "SHOOT";
+		let wordArray[1] ="BLAZE";
+		let wordArray[2] ="ENVOY";
+		let wordArray[3] ="PLANT";
+		let wordArray[4] ="BRIEF";
+		let wordArray[5] ="NEVER";
+		let wordArray[6] ="ABORT";
+		let wordArray[7] ="MOUSE";
+		let wordArray[8] ="MUCKY";
+		let wordArray[9] ="SULKY";
+		let wordArray[10] ="FIERY";
+		let wordArray[11] ="MEDIA";
+		let wordArray[12] ="TRUNK";
+		let wordArray[13] ="YEAST";
+		let wordArray[14] ="CLEAR";
+		let wordArray[15] ="SKUNK";
+		let wordArray[16] ="SCALP";
+		let wordArray[17] ="BITTY";
+		let wordArray[18] ="CIDER";
+		let wordArray[19] ="KOALA";
+		let wordArray[20] ="DUVET";
+		let wordArray[21] ="SEGUE";
+		let wordArray[22] ="CREAM";
+		let wordArray[23] ="SUPER";
+		let wordArray[24] ="GRILL";
+		let wordArray[25] ="AFTER";
+		let wordArray[26] ="OWNER";
+		let wordArray[27] ="EMBER";
+		let wordArray[28] ="REACH";
+		let wordArray[29] ="NOBLY";
+		let wordArray[30] ="EMPTY";
+		let wordArray[31] ="SPEED";
+		let wordArray[32] ="GLOAT";
+		let wordArray[33] ="RECUR";
+		let wordArray[34] ="SMOCK";
+		let wordArray[35] ="DREAD";
+		let wordArray[36] ="MERGE";
+		let wordArray[37] ="BURST";
+		let wordArray[38] ="KAPPA";
+		let wordArray[39] ="AMITY";
+		let wordArray[40] ="SHAKY";
+		let wordArray[41] ="HOVER";
+		let wordArray[42] ="CAROL";
+		let wordArray[43] ="SNARK";
+		let wordArray[44] ="APPLE";
+		let wordArray[45] ="FAINT";
+		let wordArray[46] ="HAUNT";
+		let wordArray[47] ="FLOUR";
+		let wordArray[48] ="CHAIR";
+		let wordArray[49] ="DETOX";
+		let wordArray[50] ="SHREW";
+		let wordArray[51] ="TENSE";
+		let wordArray[52] ="PLIED";
+		let wordArray[53] ="QUARK";
+		let wordArray[54] ="BURLY";
+		let wordArray[55] ="NOVEL";
+		let wordArray[56] ="WAXEN";
+		let wordArray[57] ="STOIC";
+		let wordArray[58] ="JERKY";
+		let wordArray[59] ="BLITZ";
+		let wordArray[60] ="BEEFY";
+		let wordArray[61] ="LYRIC";
+		let wordArray[62] ="HOUSE";
+		let wordArray[63] ="TOWEL";
+		let wordArray[64] ="QUILT";
+		let wordArray[65] ="BELOW";
+		let wordArray[66] ="BINGO";
+		let wordArray[67] ="WISPY";
+		let wordArray[68] ="BRASH";
+		let wordArray[69] ="SCONE";
+		let wordArray[70] ="TOAST";
+		let wordArray[71] ="EASEL";
+		let wordArray[72] ="SAUCE";
+		let wordArray[73] ="VALUE";
+		let wordArray[74] ="SPICE";
+		let wordArray[75] ="HONOR";
+		let wordArray[76] ="ROUTE";
+		let wordArray[77] ="SHARP";
+		let wordArray[78] ="BRAIN";
+		let wordArray[79] ="RADII";
+		let wordArray[80] ="SKULL";
+		let wordArray[81] ="PHONY";
+		let wordArray[82] ="ISSUE";
+		let wordArray[83] ="LAZER";
+		let wordArray[84] ="SWELL";
+		let wordArray[85] ="THROW";
+		let wordArray[86] ="FANCY";
+		let wordArray[87] ="TRIAL";
+		let wordArray[88] ="FLORA";
+		let wordArray[89] ="UPPER";
+		let wordArray[90] ="LATCH";
+		let wordArray[91] ="RIGHT";
+		let wordArray[92] ="BRICK";
+		let wordArray[93] ="RETRY";
+		let wordArray[94] ="HOLLY";
+		let wordArray[95] ="PARTY";
+		let wordArray[96] ="GRASS";
+		let wordArray[97] ="SHACK";
+		let wordArray[98] ="DOGMA";
+		let wordArray[99] ="MOVER";
+		let wordArray[100] ="DEFER";
+		let wordArray[101] ="SOBER";
+		let wordArray[102] ="OPTIC";
+		let wordArray[103] ="CRIER";
+		let wordArray[104] ="VYING";
+		let wordArray[105] ="NORSE";
+		let wordArray[106] ="FLUTE";
+		let wordArray[107] ="HIPPO";
+		let wordArray[108] ="SHARK";
+		let wordArray[109] ="DRIER";
+		let wordArray[110] ="OBEYS";
+		let wordArray[111] ="BUGLE";
+		let wordArray[112] ="TAWNY";
+		let wordArray[113] ="CHALK";
+		let wordArray[114] ="FEAST";
+		let wordArray[115] ="BLAST";
+		let wordArray[116] ="PEDAL";
+		let wordArray[117] ="SCARF";
+		let wordArray[118] ="CRUEL";
+		let wordArray[119] ="BLEAT";
+		let wordArray[120] ="TIDAL";
+		let wordArray[121] ="SLUSH";
+		let wordArray[122] ="COURT";
+		let wordArray[123] ="WINDY";
+		let wordArray[124] ="DUSTY";
+		let wordArray[125] ="RALLY";
+		let wordArray[126] ="IGLOO";
+		let wordArray[127] ="NERDY";
+		let wordArray[128] ="JEWEL";
+		let wordArray[129] ="SHONE";
+		let wordArray[130] ="WHALE";
+		let wordArray[131] ="TRAIN";
+		let wordArray[132] ="ALTAR";
+		let wordArray[133] ="VERSE";
+		let wordArray[134] ="ELBOW";
+		let wordArray[135] ="CRUMB";
+		let wordArray[136] ="PANSY";
+		let wordArray[137] ="WAIVE";
+		let wordArray[138] ="SYRUP";
+		let wordArray[139] ="TERSE";
+		let wordArray[140] ="SPRIG";
+		let wordArray[141] ="CLAIM";
+		let wordArray[142] ="SWUNG";
+		let wordArray[143] ="STAKE";
+		let wordArray[144] ="FREED";
+		let wordArray[145] ="AFIRE";
+		let wordArray[146] ="SHIRT";
+		let wordArray[147] ="TROUT";
+		let wordArray[148] ="ODDLY";
+		let wordArray[149] ="TITHE";
+		let wordArray[150] ="PLAID";
+		let wordArray[151] ="DUMMY";
+		let wordArray[152] ="BROOM";
+		let wordArray[153] ="BLIND";
+		let wordArray[154] ="TORCH";
+		let wordArray[155] ="ENEMY";
+		let wordArray[156] ="AGAIN";
+		let wordArray[157] ="TYING";
+		let wordArray[158] ="PESKY";
+		let wordArray[159] ="ALTER";
+		let wordArray[160] ="GAZER";
+		let wordArray[161] ="NOBLE";
+		let wordArray[162] ="ETHOS";
+		let wordArray[163] ="BRIDE";
+		let wordArray[164] ="CLASP";
+		let wordArray[165] ="DECOR";
+		let wordArray[166] ="HOBBY";
+		let wordArray[167] ="BEAST";
+		let wordArray[168] ="IDIOM";
+		let wordArray[169] ="UTTER";
+		let wordArray[170] ="THESE";
+		let wordArray[171] ="SIXTH";
+		let wordArray[172] ="ALARM";
+		let wordArray[173] ="ERASE";
+		let wordArray[174] ="ELEGY";
+		let wordArray[175] ="SPUNK";
+		let wordArray[176] ="PIPER";
+		let wordArray[177] ="SCALY";
+		let wordArray[178] ="SCOLD";
+		let wordArray[179] ="HEFTY";
+		let wordArray[180] ="CLICK";
+		let wordArray[181] ="SHORE";
+		let wordArray[182] ="CANAL";
+		let wordArray[183] ="WHINY";
+		let wordArray[184] ="SLASH";
+		let wordArray[185] ="QUAKE";
+		let wordArray[186] ="JOINT";
+		let wordArray[187] ="SWEPT";
+		let wordArray[188] ="PRUDE";
+		let wordArray[189] ="HEAVY";
+		let wordArray[190] ="WIELD";
+		let wordArray[191] ="FLAIR";
+		let wordArray[192] ="LASSO";
+		let wordArray[193] ="MAIZE";
+		let wordArray[194] ="SHALE";
+		let wordArray[195] ="SCREW";
+		let wordArray[196] ="SPREE";
+		let wordArray[197] ="SMOKY";
+		let wordArray[198] ="WHIFF";
+		let wordArray[199] ="SCENT";
+		let wordArray[200] ="GLIDE";
+		let wordArray[201] ="SPENT";
+		let wordArray[202] ="PRISM";
+		let wordArray[203] ="STOKE";
+		let wordArray[204] ="RIPEN";
+		let wordArray[205] ="ORBIT";
+		let wordArray[206] ="COCOA";
+		let wordArray[207] ="GUILT";
+		let wordArray[208] ="HUMUS";
+		let wordArray[209] ="SHUSH";
+		let wordArray[210] ="TABLE";
+		let wordArray[211] ="SMIRK";
+		let wordArray[212] ="WRONG";
+		let wordArray[213] ="NOISY";
+		let wordArray[214] ="ALERT";
+		let wordArray[215] ="SHINY";
+		let wordArray[216] ="ELATE";
+		let wordArray[217] ="RESIN";
+		let wordArray[218] ="WHOLE";
+		let wordArray[219] ="HUNCH";
+		let wordArray[220] ="PIXEL";
+		let wordArray[221] ="POLAR";
+		let wordArray[222] ="HOTEL";
+		let wordArray[223] ="SWORD";
+		let wordArray[224] ="CLEAT";
+		let wordArray[225] ="MANGO";
+		let wordArray[226] ="GHOUL";
+		let wordArray[227] ="HILLY";
+		let wordArray[228] ="CRUDE";
+		let wordArray[229] ="APART";
+		let wordArray[230] ="SCALE";
+		let wordArray[231] ="OLDER";
+		let wordArray[232] ="PLAIN";
+		let wordArray[233] ="BRINE";
+		let wordArray[234] ="ABBOT";
+		let wordArray[235] ="RERUN";
+		let wordArray[236] ="QUEST";
+		let wordArray[237] ="CRISP";
+		let wordArray[238] ="BOUND";
+		let wordArray[239] ="BEFIT";
+		let wordArray[240] ="DRAWN";
+		let wordArray[241] ="SUITE";
+		let wordArray[242] ="ITCHY";
+		let wordArray[243] ="CHEER";
+		let wordArray[244] ="BAGEL";
+		let wordArray[245] ="GUESS";
+		let wordArray[246] ="BROAD";
+		let wordArray[247] ="AXIOM";
+		let wordArray[248] ="CHARD";
+		let wordArray[249] ="CAPUT";
+		let wordArray[250] ="LEANT";
+		let wordArray[251] ="HARSH";
+		let wordArray[252] ="CURSE";
+		let wordArray[253] ="PROUD";
+		let wordArray[254] ="SWING";
+		let wordArray[255] ="OPINE";
+		let wordArray[256] ="TASTE";
+		let wordArray[257] ="LUPUS";
+		let wordArray[258] ="GUMBO";
+		let wordArray[259] ="MINER";
+		let wordArray[260] ="GREEN";
+		let wordArray[261] ="CHASM";
+		let wordArray[262] ="LIPID";
+		let wordArray[263] ="TOPIC";
+		let wordArray[264] ="ARMOR";
+		let wordArray[265] ="BRUSH";
+		let wordArray[266] ="CRANE";
+		let wordArray[267] ="MURAL";
+		let wordArray[268] ="PASTA";
+		let wordArray[269] ="TAFFY";
+		let wordArray[270] ="FLAME";
+		let wordArray[271] ="SWOOP";
+		let wordArray[272] ="ALOOF";
+		let wordArray[273] ="SIGHT";
+		let wordArray[274] ="BROKE";
+		let wordArray[275] ="TEARY";
+		let wordArray[276] ="CHART";
+		let wordArray[277] ="SIXTY";
+		let wordArray[278] ="WORDY";
+		let wordArray[279] ="SHEER";
+		let wordArray[280] ="SAVOR";
+		let wordArray[281] ="CLAMP";
+		let wordArray[282] ="FUNKY";
+		let wordArray[283] ="FOAMY";
+		let wordArray[284] ="TOXIC";
+		let wordArray[285] ="BRAND";
+		let wordArray[286] ="PLUMB";
+		let wordArray[287] ="DINGY";
+		let wordArray[288] ="WHEAT";
+		let wordArray[289] ="BERRY";
+		let wordArray[290] ="COWER";
+		let wordArray[291] ="CLANG";
+		let wordArray[292] ="ANGER";
+		let wordArray[293] ="DRIVE";
+		let wordArray[294] ="GOOFY";
+		let wordArray[295] ="EMAIL";
+		let wordArray[296] ="MUSIC";
+		let wordArray[297] ="STUFF";
+		let wordArray[298] ="KNOCK";
+		let wordArray[299] ="EXTRA";
+		let word = wordArray[Random.randRange(300)];
+		return word;
+	}
+
+	method void run() {
+		var String userGuess;
+		var char key;
+		var char del;
+		var int score;
+		var boolean exit;
+		var boolean exit1;
+		var boolean over;
+		var boolean win;
+		var int i;
+		var int j;
+		var String randomWord;
+		var String checkGuess;
+		let randomWord = RandWord();
+		let userGuess = String.new(10);
+		let userGuess = "XXXXXX";
+		let checkGuess = "_____";
+		let exit = false;
+		let win = false;
+		let over = false;
+		let i = 0;
+		let j = 0;
+		if (~startScreen) {
+			do Output.moveCursor(position,24);
+			while (position < 16) {
+				while (~exit) {
+					while (key = 0) {
+						let key = Keyboard.keyPressed();
+					}
+					while (~(key = 0)) {
+						let del = key;
+						if (key = 128) {
+							if (i>4) {
+								let exit = true;
+							}
+						} 
+						if (~(key = 128)) {
+							do Keyboard.readChar();
+						}
+						if (~(key = 129)) {
+							do userGuess.setCharAt(i,key);
+						}
+						let key = Keyboard.keyPressed();
+					}
+					if (~(del = 129) & ~(del = 128)) {
+						let i = i+1;
+					}
+					if (i<6) {
+						if (del=129) {
+							let i = i-1;
+							if (over) {
+								let i=i+1;
+								let over=false;
+							}
+						}
+					}
+					while (i>5) {
+						if (Keyboard.keyPressed()=129) {
+							let i=5;
+							let over=true;
+						}
+					}
+				}
+				while (j<5) {
+					if (userGuess.charAt(j)=randomWord.charAt(j)) {
+						do checkGuess.setCharAt(j,userGuess.charAt(j));
+					}
+					if(~(userGuess.charAt(j)=randomWord.charAt(j)) & (userGuess.charAt(j)=randomWord.charAt(0))) {
+						do checkGuess.setCharAt(j,toLower(userGuess.charAt(j)));
+					}
+					if(~(userGuess.charAt(j)=randomWord.charAt(j)) & (userGuess.charAt(j)=randomWord.charAt(1))) {
+						do checkGuess.setCharAt(j,toLower(userGuess.charAt(j)));
+					}
+					if(~(userGuess.charAt(j)=randomWord.charAt(j)) & (userGuess.charAt(j)=randomWord.charAt(2))) {
+						do checkGuess.setCharAt(j,toLower(userGuess.charAt(j)));
+					}
+					if(~(userGuess.charAt(j)=randomWord.charAt(j)) & (userGuess.charAt(j)=randomWord.charAt(3))) {
+						do checkGuess.setCharAt(j,toLower(userGuess.charAt(j)));
+					}
+					if(~(userGuess.charAt(j)=randomWord.charAt(j)) & (userGuess.charAt(j)=randomWord.charAt(4))) {
+						do checkGuess.setCharAt(j,toLower(userGuess.charAt(j)));
+					}
+					let j=j+1;
+				}
+				if (userGuess.charAt(0)=randomWord.charAt(0) & userGuess.charAt(1)=randomWord.charAt(1) & userGuess.charAt(2)=randomWord.charAt(2) & userGuess.charAt(3)=randomWord.charAt(3) & userGuess.charAt(4)=randomWord.charAt(4)) {
+					let score = position-9;
+					let position = 16;
+					let win = true;
+				}
+				do Output.moveCursor(position,32);
+				do Output.printString(checkGuess);
+				let position = position + 1;
+				do Output.moveCursor(position,24);
+				let exit = false;
+				let userGuess = "XXXXXX";
+				let checkGuess = "_____";
+				let i=0;
+				let j=0;
+			}
+			do Screen.clearScreen();
+			do Output.moveCursor(10,24);
+			do Output.printString("Game Over");
+			do Output.moveCursor(11,24);
+			do Output.printString("Word:");
+			do Output.printString(randomWord);
+			do Output.moveCursor(12,24);
+			do Output.printString("Score:");
+			if (~win) {
+				do Output.printString("X");
+			}
+			if (win) {
+				do Output.printInt(score);
+			}
+			do Output.printString("/6");
+		}
+		return;
+	}
+}

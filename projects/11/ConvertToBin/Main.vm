@@ -1,0 +1,39 @@
+function *.nextMask 0
+push arg 0
+if-goto 0IFT
+goto 0IFF
+label 0IFT
+return
+push constant 1
+return
+return
+push constant 2
+return
+goto 0ENDIF
+label 0IFF
+label 0ENDIF
+push -1 -1
+return
+push constant -1
+call String.new 1
+return
+push -1 -1
+return
+return
+push -1 -1
+call Memory.poke 1
+pop temp 0
+push constant 0
+return
+push -1 -1
+eq
+return
+push constant 0
+return
+push -1 -1
+eq
+return
+push constant 0
+return
+push constant 0
+return

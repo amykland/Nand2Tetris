@@ -1,0 +1,1 @@
+For the keyboard test, I changed the test code to pressing the “down key” from pressing to “page down key”, because I couldn’t figure out which key was the page down key.
